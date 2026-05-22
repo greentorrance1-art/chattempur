@@ -7,82 +7,81 @@
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { font-family: Georgia, serif; background: #F0EDE8; min-height: 100vh; padding-bottom: 40px; }
-
   .header { background: #0A1628; padding: 18px 20px 14px; }
   .header-sub { font-size: 10px; letter-spacing: 3px; color: #B8964E; text-transform: uppercase; margin-bottom: 4px; }
   .header-title { font-size: 22px; font-weight: 800; color: #fff; }
   .header-note { font-size: 11px; color: #8899BB; margin-top: 4px; }
-
   .tabs { display: flex; background: #fff; border-bottom: 2px solid #E0DCd8; }
   .tab { flex: 1; padding: 12px 8px; border: none; cursor: pointer; font-size: 12px; font-weight: 700;
     letter-spacing: 0.5px; background: #F7F5F2; color: #888; border-bottom: 3px solid transparent;
     transition: all 0.15s; font-family: Georgia, serif; }
   .tab.active { background: #fff; color: #C8102E; border-bottom: 3px solid #C8102E; }
-
   .content { padding: 14px 14px 0; }
-
   .alert { border-radius: 6px; padding: 8px 12px; margin-bottom: 12px; font-size: 11px; font-weight: 600; }
   .alert-red { background: rgba(200,16,46,0.08); border: 1px solid rgba(200,16,46,0.25); color: #C8102E; }
   .alert-gold { background: rgba(184,150,78,0.12); border: 1px solid rgba(184,150,78,0.35); color: #7A6030; }
-
-  .section-divider { display: flex; align-items: center; gap: 8px; margin: 8px 0 6px; }
+  .section-divider { display: flex; align-items: center; gap: 8px; margin: 10px 0 6px; }
   .divider-line { height: 1px; flex: 1; }
   .divider-label { font-size: 10px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; white-space: nowrap; }
-
   .card { background: #fff; border-radius: 6px; margin-bottom: 10px; overflow: hidden;
     box-shadow: 0 1px 4px rgba(0,0,0,0.05); border: 1px solid #E0DCd8; transition: all 0.2s; }
   .card.open { box-shadow: 0 4px 16px rgba(0,0,0,0.10); }
-
   .card-header { display: flex; align-items: center; justify-content: space-between;
     padding: 10px 14px; cursor: pointer; transition: background 0.15s; }
   .card-header:hover { background: #fafafa; }
   .card.open .card-header { background: rgba(10,22,40,0.03); }
-
   .card-left { flex: 1; }
   .card-title-row { display: flex; align-items: center; flex-wrap: wrap; gap: 4px; margin-bottom: 4px; }
   .card-name { font-size: 13px; font-weight: 700; color: #0A1628; }
   .card-meta { display: flex; gap: 12px; flex-wrap: wrap; }
   .card-meta span { font-size: 11px; color: #888; }
-
   .badge { font-size: 9px; font-weight: 800; padding: 2px 7px; border-radius: 3px;
     letter-spacing: 1px; text-transform: uppercase; display: inline-block; vertical-align: middle; }
   .badge-floor { background: #C8102E; color: #fff; }
   .badge-clearance { background: #B8964E; color: #fff; }
   .line-tag { font-size: 9px; font-weight: 700; padding: 2px 8px; border-radius: 2px;
     letter-spacing: 1px; text-transform: uppercase; color: #fff; display: inline-block; }
-
   .card-price { text-align: right; min-width: 100px; }
   .price-main { font-size: 18px; font-weight: 800; color: #C8102E; }
   .price-was { font-size: 10px; color: #888; text-decoration: line-through; }
   .price-label { font-size: 10px; color: #888; }
   .price-save { font-size: 10px; color: #1B5E3B; font-weight: 700; }
-
-  .chevron { margin-left: 10px; font-size: 14px; color: #888; transition: transform 0.2s; }
-
+  .chevron { margin-left: 10px; font-size: 14px; color: #888; }
   .card-body { padding: 0 14px 14px; border-top: 1px solid #eee; display: none; }
   .card.open .card-body { display: block; }
+
+  /* HERO FEATURE BOX */
+  .hero-box { margin-top: 12px; border-radius: 6px; overflow: hidden; border: 2px solid #0A1628; }
+  .hero-header { background: #0A1628; padding: 6px 12px; display: flex; justify-content: space-between; align-items: center; }
+  .hero-header-label { font-size: 10px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: #B8964E; }
+  .hero-body { display: grid; grid-template-columns: 1fr 1fr; }
+  .hero-cell { padding: 10px 12px; }
+  .hero-cell:first-child { border-right: 1px solid #eee; }
+  .hero-cell-title { font-size: 10px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; color: #888; margin-bottom: 5px; text-decoration: underline; }
+  .hero-feature-text { font-size: 13px; font-weight: 700; color: #0A1628; line-height: 1.4; }
+  .step-up-text { font-size: 12px; color: #C8102E; font-weight: 700; line-height: 1.4; }
+  .step-up-none { font-size: 11px; color: #aaa; font-style: italic; }
 
   .detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 12px; }
   .detail-box { background: #F7F5F2; border-radius: 4px; padding: 10px; }
   .detail-box-title { font-size: 10px; font-weight: 800; letter-spacing: 1px; color: #888;
-    text-transform: uppercase; margin-bottom: 6px; font-family: Georgia, serif; }
+    text-transform: uppercase; margin-bottom: 6px; }
   .feature-item { font-size: 12px; color: #0A1628; margin-bottom: 3px; }
   .size-row { display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 3px; }
   .size-label { color: #888; }
   .size-price { color: #0A1628; font-weight: 700; }
   .monthly-note { margin-top: 6px; font-size: 11px; color: #C8102E; font-weight: 600; }
-
   .line-box { margin-top: 10px; border-radius: 3px; padding: 8px 10px; border-left: 3px solid; }
   .line-box-title { font-size: 10px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 3px; }
   .line-box-text { font-size: 12px; color: #0A1628; }
-
   .pitch-box { margin-top: 8px; border-radius: 3px; padding: 8px 10px; border-left: 3px solid; }
   .pitch-title { font-size: 10px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 3px; }
   .pitch-text { font-size: 12px; color: #0A1628; }
   .pitch-bridge { margin-top: 4px; font-size: 11px; color: #C8102E; font-weight: 600; }
-
   @media (max-width: 480px) {
     .detail-grid { grid-template-columns: 1fr; }
+    .hero-body { grid-template-columns: 1fr; }
+    .hero-cell:first-child { border-right: none; border-bottom: 1px solid #eee; }
     .card-name { font-size: 12px; }
   }
 </style>
@@ -101,13 +100,8 @@
 </div>
 
 <div class="content">
-  <div id="alert-floor" class="alert alert-red">
-    ● 8 models currently on your sales floor — organized Adapt → ProAdapt → LuxeAdapt → ProBreeze → LuxeBreeze, by height
-  </div>
-  <div id="alert-prev" class="alert alert-gold" style="display:none;">
-    ★ Clearance models — use Bridge Pitch to transition guests to current lineup when budget allows
-  </div>
-
+  <div id="alert-floor" class="alert alert-red">● 8 models currently on your sales floor — Adapt → ProAdapt → LuxeAdapt → ProBreeze → LuxeBreeze</div>
+  <div id="alert-prev" class="alert alert-gold" style="display:none;">★ Clearance models — use Bridge Pitch to transition guests to the current lineup</div>
   <div id="section-floor"></div>
   <div id="section-prev" style="display:none;"></div>
 </div>
@@ -120,167 +114,197 @@ const lineColors = {
   "ProBreeze":  "#1B5E3B",
   "LuxeBreeze": "#0D3D2A",
 };
-
 const lineDesc = {
   "Adapt":      "Entry point to Tempur-Pedic. All-foam or hybrid. Pure pressure relief, adaptive support. Best for guests who want the Tempur feel at the most accessible price.",
   "ProAdapt":   "Mid-tier. 20% more pressure relief than Adapt. More material, more contouring, better motion isolation. Best for guests who sleep hot or need extra support.",
-  "LuxeAdapt":  "Top all-foam line. Deepest contouring, most pressure relief of any non-Breeze model. Best for side sleepers or chronic pain.",
-  "ProBreeze":  "Cooling-focused. Feels up to 3° cooler all night. All the ProAdapt pressure relief + advanced cooling tech. Best for moderate hot sleepers.",
-  "LuxeBreeze": "The pinnacle. Max cooling + max pressure relief. Feels up to 8° cooler. Best for hot sleepers who want the absolute best.",
+  "LuxeAdapt":  "Top all-foam line. 30% more support than ProAdapt. Deepest contouring, most pressure relief of any non-Breeze model. Best for side sleepers or chronic pain.",
+  "ProBreeze":  "Cooling-focused. Feels up to 5° cooler all night. All the ProAdapt pressure relief + Pure Cool® active cooling tech. Best for moderate hot sleepers.",
+  "LuxeBreeze": "The pinnacle. Pure Cool® plus Material. Feels up to 10° cooler all night. Max cooling + max pressure relief. For hot sleepers who want the absolute best.",
 };
 
 const floorModels = [
   {
-    line: "Adapt", name: "TEMPUR-Adapt® 2.0 11\" Medium", sku: "144041",
-    height: "11\"", feel: "Medium", type: "All-Foam",
+    line: "Adapt", name: 'TEMPUR-Adapt® 2.0 11" Medium', sku: "144041",
+    height: '11"', feel: "Medium", type: "All-Foam",
     queenPrice: 2099, wasPrice: 2199,
     monthly: "$59/mo × 36 months @ 0%",
+    heroFeature: "Legendary TEMPUR-Material™",
+    stepUp: "Entry line — this IS the baseline. Step up to ProAdapt for 20% more pressure relief.",
     sizes: { "Twin/TXL": 1599, "Full": 1949, "King/CK": 2799, "Split King": 3198 },
     key: ["Entry-level Tempur feel", "Pure adaptive pressure relief", "Cool-to-touch cover", "36-mo 0% financing"],
     pitch: "The most accessible way into the Tempur-Pedic family. All the pressure relief, none of the extras.",
   },
   {
-    line: "Adapt", name: "TEMPUR-Adapt® 2.0 11\" Medium Hybrid", sku: "144040",
-    height: "11\"", feel: "Medium", type: "Hybrid",
+    line: "Adapt", name: 'TEMPUR-Adapt® 2.0 11" Medium Hybrid', sku: "144040",
+    height: '11"', feel: "Medium", type: "Hybrid",
     queenPrice: 2399, wasPrice: 2499,
     monthly: "$67/mo × 36 months @ 0%",
+    heroFeature: "Legendary TEMPUR-Material™ + Coil Support",
+    stepUp: "Adapt baseline + coil system. Better airflow and edge support than all-foam Adapt.",
     sizes: { "Twin/TXL": 1899, "Full": 2249, "King/CK": 3099, "Split King": 3798 },
     key: ["Tempur material + coil support", "Better airflow than all-foam", "Enhanced edge support", "Great for combo sleepers"],
-    pitch: "Same entry price range as the foam Adapt but with coils for those who want more bounce and airflow.",
+    pitch: "Same entry price range as the foam Adapt but with coils for guests who want more bounce and airflow.",
   },
   {
-    line: "ProAdapt", name: "TEMPUR-ProAdapt® 2.0 12\" Firm", sku: "144045",
-    height: "12\"", feel: "Firm", type: "All-Foam",
+    line: "ProAdapt", name: 'TEMPUR-ProAdapt® 2.0 12" Firm', sku: "144045",
+    height: '12"', feel: "Firm", type: "All-Foam",
     queenPrice: 3199, wasPrice: 3399,
     monthly: "$54/mo × 60 months @ 0%",
+    heroFeature: "Advanced Relief® Material",
+    stepUp: "20% more pressure relief than the Adapt™ model",
     sizes: { "Twin/TXL": 2699, "Full": 3049, "King/CK": 3899, "Split King": 5398 },
     key: ["20% more pressure relief than Adapt", "Firm feel with Tempur contouring", "SmartClimate cover", "Best for back/stomach sleepers"],
     pitch: "For guests who want support but don't want to sink. Firm Tempur — still conforms, doesn't compress.",
   },
   {
-    line: "ProAdapt", name: "TEMPUR-ProAdapt® 2.0 12\" Medium Hybrid", sku: "144046",
-    height: "12\"", feel: "Medium", type: "Hybrid",
+    line: "ProAdapt", name: 'TEMPUR-ProAdapt® 2.0 12" Medium Hybrid', sku: "144046",
+    height: '12"', feel: "Medium", type: "Hybrid",
     queenPrice: 3199, wasPrice: 3399,
     monthly: "$54/mo × 60 months @ 0%",
+    heroFeature: "Advanced Relief® Material + Coil System",
+    stepUp: "20% more pressure relief than the Adapt™ model — now with hybrid airflow",
     sizes: { "Twin/TXL": 2699, "Full": 3049, "King/CK": 3899, "Split King": 5398 },
     key: ["20% more pressure relief than Adapt", "Coil layer = better airflow + edge support", "Medium feel suits most sleepers", "Best value hybrid in lineup"],
-    pitch: "The most popular ProAdapt. Hybrid gives you the bounce and breathability, Tempur gives you the pressure relief.",
+    pitch: "The most popular ProAdapt. Hybrid gives you bounce and breathability, Tempur gives you the pressure relief.",
   },
   {
-    line: "LuxeAdapt", name: "TEMPUR-LuxeAdapt® 2.0 13\" Medium Hybrid", sku: "144043",
-    height: "13\"", feel: "Medium", type: "Hybrid",
+    line: "LuxeAdapt", name: 'TEMPUR-LuxeAdapt® 2.0 13" Medium Hybrid', sku: "144043",
+    height: '13"', feel: "Medium", type: "Hybrid",
     queenPrice: 4399, wasPrice: 4699,
     monthly: "$62/mo × 72 months @ 0%",
+    heroFeature: "Ergonomic Support Layer",
+    stepUp: "30% more support than the ProAdapt® model",
     sizes: { "Twin/TXL": 3899, "Full": "—", "King/CK": 5099, "Split King": 7798 },
-    key: ["Deepest Tempur contouring available", "Thickest non-Breeze model", "Hybrid for airflow + support", "Best for chronic pain / side sleepers"],
+    key: ["Deepest Tempur contouring available", "Thickest non-Breeze model at 13\"", "Hybrid for airflow + support", "Best for chronic pain / side sleepers"],
     pitch: "If a guest wants the most immersive Tempur feel without cooling tech — this is the top of the line.",
   },
   {
-    line: "ProBreeze", name: "TEMPUR-ProBreeze® Medium Hybrid 12\"", sku: "143764",
-    height: "12\"", feel: "Medium", type: "Hybrid + Cooling",
+    line: "ProBreeze", name: 'TEMPUR-ProBreeze® Medium Hybrid 12"', sku: "143764",
+    height: '12"', feel: "Medium", type: "Hybrid + Cooling",
     queenPrice: 4099, wasPrice: 4399,
     monthly: "$57/mo × 72 months @ 0%",
+    heroFeature: "Pure Cool® Material",
+    stepUp: "5 Degrees Cooler ALL NIGHT LONG",
     sizes: { "Twin/TXL": 3599, "Full": "—", "King/CK": 4799, "Split King": 7198 },
-    key: ["Feels up to 3° cooler all night", "ProAdapt pressure relief + active cooling", "Hybrid construction", "Best for moderate hot sleepers"],
+    key: ["Feels 5° cooler all night", "ProAdapt pressure relief + active cooling", "Pure Cool® material throughout", "Best for moderate hot sleepers"],
     pitch: "Step up from ProAdapt for anyone who runs warm. Same great support, now with real cooling technology.",
   },
   {
-    line: "LuxeBreeze", name: "TEMPUR-LuxeBreeze® Medium Hybrid 13\"", sku: "143781",
-    height: "13\"", feel: "Medium", type: "Hybrid + Max Cooling",
+    line: "LuxeBreeze", name: 'TEMPUR-LuxeBreeze® Medium Hybrid 13"', sku: "143781",
+    height: '13"', feel: "Medium", type: "Hybrid + Max Cooling",
     queenPrice: 5399, wasPrice: 5699,
     monthly: "$75/mo × 72 months @ 0%",
+    heroFeature: "Pure Cool® plus Material",
+    stepUp: "10 Degrees Cooler ALL NIGHT LONG",
     sizes: { "Twin/TXL": 4899, "Full": "—", "King/CK": 6099, "Split Head King": 10098, "Split King/CK": 9798 },
-    key: ["Feels up to 8° cooler all night", "Maximum pressure relief + maximum cooling", "Purest TEMPUR-CM+ material", "The pinnacle of the lineup"],
-    pitch: "For the guest who wants absolutely the best — most cooling, most contouring, most mattress Tempur makes.",
+    key: ["Feels 10° cooler all night", "Maximum pressure relief + maximum cooling", "Purest TEMPUR-CM+ material", "The absolute pinnacle of the lineup"],
+    pitch: "For the guest who wants the best — most cooling, most contouring, most mattress Tempur makes.",
   },
   {
-    line: "LuxeBreeze", name: "TEMPUR-LuxeBreeze® Soft 13\"", sku: "143782",
-    height: "13\"", feel: "Soft", type: "All-Foam + Max Cooling",
+    line: "LuxeBreeze", name: 'TEMPUR-LuxeBreeze® Soft 13"', sku: "143782",
+    height: '13"', feel: "Soft", type: "All-Foam + Max Cooling",
     queenPrice: 5399, wasPrice: 5699,
     monthly: "$75/mo × 72 months @ 0%",
+    heroFeature: "Pure Cool® plus Material — Softest Feel",
+    stepUp: "10 Degrees Cooler ALL NIGHT LONG — softest model in entire lineup",
     sizes: { "Twin/TXL": 4899, "Full": "—", "King/CK": 6099, "Split Head King": 10098, "Split King/CK": 9798 },
-    key: ["Softest feel in the entire lineup", "Feels up to 8° cooler all night", "All-foam for deepest hug/contouring", "Side sleeper + hot sleeper dream"],
+    key: ["Softest feel in the entire lineup", "Feels 10° cooler all night", "All-foam for deepest hug/contouring", "Side sleeper + hot sleeper dream"],
     pitch: "The softest mattress Tempur makes — and the coolest. For guests who want to be cradled and stay cool.",
   },
 ];
 
 const prevGenModels = [
   {
-    line: "Adapt", name: "TEMPUR-Adapt® 11\" Medium", sku: "134072P",
-    height: "11\"", feel: "Medium", type: "All-Foam",
+    line: "Adapt", name: 'TEMPUR-Adapt® 11" Medium', sku: "134072P",
+    height: '11"', feel: "Medium", type: "All-Foam",
     clearancePrice: 1539, wasPrice: 2199, discount: "29% OFF",
+    heroFeature: "Legendary TEMPUR-Material™",
+    stepUp: "Entry baseline — steps up to ProAdapt for 20% more pressure relief",
     sizes: { "Twin/TXL": 1189, "Queen": 1539, "King": 2029 },
     key: ["Entry-level Tempur feel", "Pure all-foam pressure relief", "Cool-to-touch cover", "Adaptive support"],
-    bridgePitch: "Lowest price point in the clearance lineup. Perfect for budget-conscious shoppers. Bridge to current Adapt 2.0 Medium — only $560 more for the latest version.",
+    bridgePitch: "Lowest price point in clearance. Perfect for budget shoppers. Bridge to Adapt 2.0 Medium — only $560 more for the latest version.",
     currentEquiv: "Adapt 2.0 11\" Medium",
   },
   {
-    line: "Adapt", name: "TEMPUR-Adapt® 11\" Medium Hybrid", sku: "135235P",
-    height: "11\"", feel: "Medium", type: "Hybrid",
+    line: "Adapt", name: 'TEMPUR-Adapt® 11" Medium Hybrid', sku: "135235P",
+    height: '11"', feel: "Medium", type: "Hybrid",
     clearancePrice: 1749, wasPrice: 2499, discount: "29% OFF",
+    heroFeature: "Legendary TEMPUR-Material™ + Coil Support",
+    stepUp: "Hybrid step-up from all-foam Adapt — more airflow, better edge support",
     sizes: { "Twin/TXL": 1399, "Queen": 1749, "King": 2239 },
     key: ["Coil + Tempur hybrid", "Cool-to-touch cover", "Motion isolation", "Pressure relief for all sleepers"],
-    bridgePitch: "Same Adapt DNA as the current 11\" Hybrid — guest gets the Tempur hybrid experience at a significant discount. Bridge to the new Adapt 2.0 if budget opens up.",
+    bridgePitch: "Same Adapt DNA as the current 11\" Hybrid — Tempur hybrid experience at a significant discount. Bridge to the Adapt 2.0 if budget opens up.",
     currentEquiv: "Adapt 2.0 11\" Medium Hybrid",
   },
   {
-    line: "ProAdapt", name: "TEMPUR-ProAdapt® 12\" Medium", sku: "134064P",
-    height: "12\"", feel: "Medium", type: "All-Foam",
+    line: "ProAdapt", name: 'TEMPUR-ProAdapt® 12" Medium', sku: "134064P",
+    height: '12"', feel: "Medium", type: "All-Foam",
     clearancePrice: 2379, wasPrice: 3399, discount: "29% OFF",
+    heroFeature: "Advanced Relief® Material",
+    stepUp: "20% more pressure relief than the Adapt™ model",
     sizes: { "Twin/TXL": 2029, "Queen": 2379, "King": 2869 },
     key: ["20% more pressure relief than Adapt", "All-foam deep contouring", "Adaptive support", "SmartClimate cover"],
-    bridgePitch: "Guest gets ProAdapt-level pressure relief without the full price. Once they feel the difference from Adapt, upsell to current ProAdapt 2.0.",
+    bridgePitch: "Guest gets ProAdapt-level pressure relief without the full price. Once they feel the difference, upsell to current ProAdapt 2.0.",
     currentEquiv: "ProAdapt 2.0 12\" Medium Hybrid",
   },
   {
-    line: "ProAdapt", name: "TEMPUR-ProAdapt® 12\" Soft", sku: "135236P",
-    height: "12\"", feel: "Soft", type: "All-Foam",
+    line: "ProAdapt", name: 'TEMPUR-ProAdapt® 12" Soft', sku: "135236P",
+    height: '12"', feel: "Soft", type: "All-Foam",
     clearancePrice: 2379, wasPrice: 3399, discount: "29% OFF",
+    heroFeature: "Advanced Relief® Material — Plush Feel",
+    stepUp: "20% more pressure relief than Adapt — softest ProAdapt configuration",
     sizes: { "Twin/TXL": 2029, "Queen": 2379, "King": 2869 },
     key: ["Softest ProAdapt feel", "Deep pressure relief", "Plush contouring", "Best for side sleepers"],
-    bridgePitch: "For side sleepers who can't stretch to $3,199. A true ProAdapt feel at clearance pricing. Bridge to ProAdapt 2.0 Medium Hybrid.",
+    bridgePitch: "For side sleepers who can't stretch to $3,199. True ProAdapt feel at clearance pricing.",
     currentEquiv: "ProAdapt 2.0 12\" Medium Hybrid",
   },
   {
-    line: "ProAdapt", name: "TEMPUR-ProAdapt® 12\" Medium Hybrid", sku: "134069P",
-    height: "12\"", feel: "Medium", type: "Hybrid",
+    line: "ProAdapt", name: 'TEMPUR-ProAdapt® 12" Medium Hybrid', sku: "134069P",
+    height: '12"', feel: "Medium", type: "Hybrid",
     clearancePrice: 2379, wasPrice: 3399, discount: "29% OFF",
+    heroFeature: "Advanced Relief® Material + Coil System",
+    stepUp: "20% more pressure relief than Adapt — with hybrid airflow and edge support",
     sizes: { "Twin/TXL": 2029, "Queen": 2379, "King": 2869 },
     key: ["ProAdapt + coil support", "Better airflow", "Enhanced edge support", "Balanced feel for all sleepers"],
-    bridgePitch: "Best clearance value in the lineup. Nearly identical to current ProAdapt 2.0 Hybrid but $820 less. Easiest bridge conversation you'll have.",
+    bridgePitch: "Best clearance value in the lineup. Nearly identical to current ProAdapt 2.0 Hybrid but $820 less. Easiest bridge conversation you will have.",
     currentEquiv: "ProAdapt 2.0 12\" Medium Hybrid",
   },
   {
-    line: "ProAdapt", name: "TEMPUR-ProAdapt® 12\" Firm", sku: "134070P",
-    height: "12\"", feel: "Firm", type: "All-Foam",
+    line: "ProAdapt", name: 'TEMPUR-ProAdapt® 12" Firm', sku: "134070P",
+    height: '12"', feel: "Firm", type: "All-Foam",
     clearancePrice: 2379, wasPrice: 3399, discount: "29% OFF",
+    heroFeature: "Advanced Relief® Material — Firm Support",
+    stepUp: "20% more pressure relief than Adapt — firm feel for back and stomach sleepers",
     sizes: { "Twin/TXL": 2029, "Queen": 2379, "King": 2869 },
     key: ["Firm Tempur contouring", "ProAdapt pressure relief", "Back/stomach sleeper ideal", "Minimal sinkage"],
     bridgePitch: "Firm feel shoppers get full ProAdapt quality at clearance. Bridge to current ProAdapt 2.0 Firm if they want the latest materials.",
     currentEquiv: "ProAdapt 2.0 12\" Firm",
   },
   {
-    line: "LuxeAdapt", name: "TEMPUR-LuxeAdapt® 13\" Soft", sku: "134068P",
-    height: "13\"", feel: "Soft", type: "All-Foam",
+    line: "LuxeAdapt", name: 'TEMPUR-LuxeAdapt® 13" Soft', sku: "134068P",
+    height: '13"', feel: "Soft", type: "All-Foam",
     clearancePrice: 2939, wasPrice: 4199, discount: "29% OFF",
+    heroFeature: "Ergonomic Support Layer — Plush Feel",
+    stepUp: "30% more support than ProAdapt® — thickest all-foam prev gen model",
     sizes: { "Twin/TXL": 2589, "Queen": 2939, "King": 3429 },
-    key: ["Thickest all-foam Tempur prev gen", "Deepest pressure contouring", "Plush soft feel", "Side sleeper perfection"],
-    bridgePitch: "Guest gets LuxeAdapt-tier thickness at $1,460 less than current. Bridge to LuxeAdapt 2.0 Med Hybrid for those wanting coils + warranty coverage.",
+    key: ["Thickest all-foam prev gen Tempur", "Deepest pressure contouring", "Plush soft feel", "Side sleeper perfection"],
+    bridgePitch: "Guest gets LuxeAdapt-tier thickness at $1,460 less than current. Bridge to LuxeAdapt 2.0 Med Hybrid for coils + full warranty.",
     currentEquiv: "LuxeAdapt 2.0 13\" Medium Hybrid",
   },
   {
-    line: "LuxeAdapt", name: "TEMPUR-LuxeAdapt® 13\" Firm", sku: "134071P",
-    height: "13\"", feel: "Firm", type: "All-Foam",
+    line: "LuxeAdapt", name: 'TEMPUR-LuxeAdapt® 13" Firm', sku: "134071P",
+    height: '13"', feel: "Firm", type: "All-Foam",
     clearancePrice: 2939, wasPrice: 4199, discount: "29% OFF",
+    heroFeature: "Ergonomic Support Layer — Firm Support",
+    stepUp: "30% more support than ProAdapt® — firmest model at the LuxeAdapt tier",
     sizes: { "Twin/TXL": 2589, "Queen": 2939, "King": 3429 },
     key: ["Firmest LuxeAdapt model", "13\" of Tempur pressure relief", "Deep support without excess softness", "Back/stomach sleeper at this tier"],
-    bridgePitch: "Rare find — firm preference at this tier. Excellent way in for a back sleeper who needs premium support but balks at $4,399.",
+    bridgePitch: "Rare find — firm preference at this tier. Great way in for a back sleeper who needs premium support but balks at $4,399.",
     currentEquiv: "LuxeAdapt 2.0 13\" Medium Hybrid",
   },
 ];
 
 const lineOrder = ["Adapt","ProAdapt","LuxeAdapt","ProBreeze","LuxeBreeze"];
-
 function groupByLine(models) {
   const groups = {};
   models.forEach(m => { if (!groups[m.line]) groups[m.line] = []; groups[m.line].push(m); });
@@ -288,19 +312,16 @@ function groupByLine(models) {
 }
 
 let cardId = 0;
-
 function buildCard(m, isFloor) {
   const lc = lineColors[m.line] || "#0A1628";
   const id = "card-" + (++cardId);
   const price = isFloor ? m.queenPrice : m.clearancePrice;
-  const was = m.wasPrice;
 
   const sizesHtml = Object.entries(m.sizes).map(([s, p]) =>
     `<div class="size-row"><span class="size-label">${s}</span><span class="size-price">${p === "—" ? "—" : "$" + (typeof p === "number" ? p.toLocaleString() : p)}</span></div>`
   ).join("");
 
   const keysHtml = m.key.map(k => `<div class="feature-item">• ${k}</div>`).join("");
-
   const pitchColor = isFloor ? "#B8964E" : "#1B5E3B";
   const pitchBg = isFloor ? "#fff8f0" : "#f0fff4";
   const pitchLabel = isFloor ? "Sales Pitch" : "Bridge Pitch";
@@ -309,14 +330,14 @@ function buildCard(m, isFloor) {
     ? `<div class="pitch-bridge">→ Steps up to: ${m.currentEquiv}</div>` : "";
 
   const priceRight = isFloor
-    ? `<div class="price-main">$${price.toLocaleString()}</div>
-       <div class="price-was">$${was.toLocaleString()}</div>
-       <div class="price-label">Queen</div>`
-    : `<div class="price-main">$${price.toLocaleString()}</div>
-       <div class="price-was">$${was.toLocaleString()}</div>
-       <div class="price-save">${m.discount}</div>`;
+    ? `<div class="price-main">$${price.toLocaleString()}</div><div class="price-was">$${m.wasPrice.toLocaleString()}</div><div class="price-label">Queen</div>`
+    : `<div class="price-main">$${price.toLocaleString()}</div><div class="price-was">$${m.wasPrice.toLocaleString()}</div><div class="price-save">${m.discount}</div>`;
 
   const monthlyHtml = isFloor ? `<div class="monthly-note">${m.monthly}</div>` : "";
+
+  const stepUpLabel = m.stepUp.includes("Entry") || m.stepUp.includes("baseline")
+    ? `<span class="step-up-none">${m.stepUp}</span>`
+    : `<span class="step-up-text">${m.stepUp}</span>`;
 
   return `
   <div class="card" id="${id}">
@@ -338,6 +359,24 @@ function buildCard(m, isFloor) {
       <div class="chevron">▼</div>
     </div>
     <div class="card-body">
+
+      <!-- HERO FEATURE + STEP UP -->
+      <div class="hero-box">
+        <div class="hero-header">
+          <span class="hero-header-label">Walking The Line — Key Differentiators</span>
+        </div>
+        <div class="hero-body">
+          <div class="hero-cell">
+            <div class="hero-cell-title">Hero Feature</div>
+            <div class="hero-feature-text">${m.heroFeature}</div>
+          </div>
+          <div class="hero-cell">
+            <div class="hero-cell-title">Percentage Step-Up</div>
+            ${stepUpLabel}
+          </div>
+        </div>
+      </div>
+
       <div class="detail-grid">
         <div class="detail-box">
           <div class="detail-box-title">Key Features</div>
@@ -363,17 +402,15 @@ function buildCard(m, isFloor) {
 }
 
 function buildSection(models, isFloor) {
-  const grouped = groupByLine(models);
-  return grouped.map(({ line, items }) => {
+  return groupByLine(models).map(({ line, items }) => {
     const lc = lineColors[line] || "#0A1628";
-    const cards = items.map(m => buildCard(m, isFloor)).join("");
     return `
       <div class="section-divider">
         <div class="divider-line" style="background:${lc}40;"></div>
         <span class="divider-label" style="color:${lc};">${line} Line</span>
         <div class="divider-line" style="background:${lc}40;"></div>
       </div>
-      ${cards}`;
+      ${items.map(m => buildCard(m, isFloor)).join("")}`;
   }).join("");
 }
 
@@ -386,7 +423,6 @@ function toggleCard(id) {
   card.classList.toggle("open");
   chevron.textContent = card.classList.contains("open") ? "▲" : "▼";
 }
-
 function switchTab(tab, btn) {
   document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
   btn.classList.add("active");
